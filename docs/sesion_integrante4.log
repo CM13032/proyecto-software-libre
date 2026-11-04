@@ -1,0 +1,419 @@
+Script iniciado en 2026-11-03 15:11:08-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="238" LINES="48"]
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker --version[27msudo docker --version
+[?2004l[sudo] contraseña para starksystem: ****    
+Docker version 29.1.3, build 29.1.3-0ubuntu3~24.04.2
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mls web/ scripts/ Dockerfile[27mls web/ scripts/ Dockerfile
+[?2004lDockerfile
+
+scripts/:
+instalar_docker.sh  reporte_sistema.sh  setup_servidor.sh
+
+web/:
+index.html
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mCRON_LINE="*/30 * * * * \"$(pwd)/scripts/reporte_sistema.sh\""[27m
+[7m(sudo crontab -l 2>/dev/null; echo "$CRON_LINE") | sudo crontab -[27m
+[7msudo crontab -l | tail -n 3[27m
+[7msystemctl status cron --no-pager[27m[A[A[A]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ CRON_LINE="*/30 * * * * \"$(pwd)/scripts/reporte_sistema.sh\""
+(sudo crontab -l 2>/dev/null; echo "$CRON_LINE") | sudo crontab -
+sudo crontab -l | tail -n 3
+systemctl status cron --no-pager
+[?2004l*/30 * * * * "/home/starksystem/Escritorio/ISL PROYECTO/proyecto-software-libre/scripts/reporte_sistema.sh"
+[0;1;32m●[0m cron.service - Regular background program processing daemon
+     Loaded: loaded (]8;;file://starksystem-VirtualBox/usr/lib/systemd/system/cron.service/usr/lib/systemd/system/cron.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Tue 2026-11-03 13:19:04 CST; 1h 55min ago
+       Docs: ]8;;man:cron(8)man:cron(8)]8;;
+   Main PID: 564 (cron)
+      Tasks: 1 (limit: 2254)
+     Memory: 484.0K (peak: 2.1M swap: 160.0K swap peak: 160.0K)
+        CPU: 50ms
+     CGroup: /system.slice/cron.service
+             └─[0;38;5;245m564 /usr/sbin/cron -f -P[0m
+
+nov 03 13:19:04 starksystem-VirtualBox cron[564]: (CRON) INFO (pidfile fd = 3)
+nov 03 13:19:04 starksystem-VirtualBox cron[564]: (CRON) INFO (Running @reboot jobs)
+nov 03 13:30:01 starksystem-VirtualBox CRON[2890]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+nov 03 13:30:01 starksystem-VirtualBox CRON[2892]: (root) CMD ([ -x /etc/init.d/anacron ] && if [ ! -d /run/systemd/system ]; then /usr/sbin/invoke-rc.d anacron start >/dev/null; fi)
+nov 03 13:30:01 starksystem-VirtualBox CRON[2890]: pam_unix(cron:session): session closed for user root
+nov 03 14:17:01 starksystem-VirtualBox CRON[4850]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+nov 03 14:17:01 starksystem-VirtualBox CRON[4851]: (root) CMD (cd / && run-parts --report /etc/cron.hourly)
+nov 03 14:17:01 starksystem-VirtualBox CRON[4850]: pam_unix(cron:session): session closed for user root
+nov 03 14:30:01 starksystem-VirtualBox CRON[4898]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+nov 03 14:30:01 starksystem-VirtualBox CRON[4898]: pam_unix(cron:session): session closed for user root
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo ./scripts/reporte_sistema.sh[27msudo ./scripts/reporte_sistema.sh
+[?2004lsudo: ./scripts/reporte_sistema.sh: orden no encontrada
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo ./scripts/reporte_sistema.sh[27m
+[7msudo tail -n 15 /var/log/reporte_sistema.log[27m
+[7mdate[27m[A[A]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ sudo ./scripts/reporte_sistema.sh
+sudo tail -n 15 /var/log/reporte_sistema.log
+date
+[?2004lsudo: ./scripts/reporte_sistema.sh: orden no encontrada
+tail: no se puede abrir '/var/log/reporte_sistema.log' para lectura: No existe el archivo o el directorio
+mar 03 nov 2026 15:16:14 CST
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mls -l scripts/[27m
+[7mfile scripts/reporte_sistema.sh[27m
+[7mchmod +x scripts/*.sh[27m
+[7msed -i 's/\r$//' scripts/reporte_sistema.sh[27m
+[7mls -l scripts/[27m[A[A[A[A]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ ls -l scripts/
+file scripts/reporte_sistema.sh
+chmod +x scripts/*.sh
+sed -i 's/\r$//' scripts/reporte_sistema.sh
+ls -l scripts/
+[?2004ltotal 12
+-rw-rw-rw- 1 starksystem starksystem 1004 nov  3 15:07 instalar_docker.sh
+-rw-rw-rw- 1 starksystem starksystem  641 nov  3 15:07 reporte_sistema.sh
+-rw-rw-rw- 1 starksystem starksystem 1024 nov  3 15:07 setup_servidor.sh
+scripts/reporte_sistema.sh: Bourne-Again shell script, ASCII text executable, with CRLF line terminators
+total 12
+-rwxrwxrwx 1 starksystem starksystem 1004 nov  3 15:07 [0m[01;32minstalar_docker.sh[0m
+-rwxrwxrwx 1 starksystem starksystem  616 nov  3 15:18 [01;32mreporte_sistema.sh[0m
+-rwxrwxrwx 1 starksystem starksystem 1024 nov  3 15:07 [01;32msetup_servidor.sh[0m
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo ./scripts/reporte_sistema.sh[27msudo ./scripts/reporte_sistema.sh
+[?2004l[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo tail -n 15 /var/log/reporte_sistema.log[27m
+[7mdate[27m[A]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ sudo tail -n 15 /var/log/reporte_sistema.log
+date
+[?2004lREPORTE DEL SISTEMA - 2026-11-03 15:24:11
+USO DE CPU (Carga promedio)
+ 0.00, 0.03, 0.05
+USO DE MEMORIA RAM
+               total       usado       libre  compartido   búf/caché  disponible
+Mem:           1.9Gi       1.0Gi       144Mi        44Mi       1.0Gi       942Mi
+Inter:         5.9Gi       106Mi       5.8Gi
+ESPACIO EN DISCO
+S.ficheros     Tamaño Usados  Disp Uso% Montado en
+/dev/sda3         59G    17G   40G  30% /
+USUARIOS CONECTADOS
+starksystem tty7         2026-11-03 13:19 (:0)
+starksystem pts/2        2026-11-03 15:24
+
+mar 03 nov 2026 15:25:03 CST
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker network create red-proyecto[27msudo docker network create red-proyecto
+[?2004l99bc828aeeee2a496b4d44b00cf81b9863c7f19f49b4c6d6ceabbbc8654f5205
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker network ls[27msudo docker network ls
+[?2004lNETWORK ID     NAME           DRIVER    SCOPE
+1e14402073ff   bridge         bridge    local
+0fec9cfeb99a   host           host      local
+c59f3ff6f806   none           null      local
+99bc828aeeee   red-proyecto   bridge    local
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker run -d --name nginx-red --network red-proyecto -p 8082:80 nginx:latest[27msudo docker run -d --name nginx-red --network red-proyecto -p 8082:80 nginx:latest
+[?2004lb2fb30f5095eafc280938051b222be39f58d60219ade2180422732fd46dc6b11
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker ps[27msudo docker ps
+[?2004lCONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+b2fb30f5095e   nginx:latest   "/docker-entrypoint.…"   16 seconds ago   Up 15 seconds   0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   nginx-red
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mcurl -s http://localhost:8082 | head -n 5[27mcurl -s http://localhost:8082 | head -n 5
+[?2004l<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker volume create volumen-web[27msudo docker volume create volumen-web
+[?2004lvolumen-web
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker volume ls[27msudo docker volume ls
+[?2004lDRIVER    VOLUME NAME
+local     volumen-web
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker run -d --name nginx-volumen -p 8083:80 \[27m
+[7m-v volumen-web:/usr/share/nginx/html nginx:latest[27m[A]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ sudo docker run -d --name nginx-volumen -p 8083:80 \
+-v volumen-web:/usr/share/nginx/html nginx:latest
+[?2004le0f097481377a85e905aa1f1be8b2562889d36f277688687e5f43b32a54ee365
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker exec nginx-volumen sh -c \[27m
+[7m'echo "<h1>Grupo 9 - Volumen persistente</h1>" > /usr/share/nginx/html/index.html'[27m[A]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ sudo docker exec nginx-volumen sh -c \
+'echo "<h1>Grupo 9 - Volumen persistente</h1>" > /usr/share/nginx/html/index.html'
+[?2004l[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mcurl -s http://localhost:8083[27mcurl -s http://localhost:8083
+[?2004l<h1>Grupo 9 - Volumen persistente</h1>
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker rm -f nginx-volumen[27msudo docker rm -f nginx-volumen
+[?2004lnginx-volumen
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker run -d --name nginx-volumen -p 8083:80 \[27m
+[7m-v volumen-web:/usr/share/nginx/html nginx:latest[27m
+[7msleep 2[27m[A[A]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ sudo docker run -d --name nginx-volumen -p 8083:80 \
+-v volumen-web:/usr/share/nginx/html nginx:latest
+sleep 2
+[?2004lfef981cc9bfff02c1b9a9684cb5ffcdee5e318f47a28d20d89b6a182a790d306
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mcurl -s http://localhost:8083[27mcurl -s http://localhost:8083
+[?2004l<h1>Grupo 9 - Volumen persistente</h1>
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker network inspect red-proyecto[27msudo docker network inspect red-proyecto
+[?2004l[
+    {
+        "Name": "red-proyecto",
+        "Id": "99bc828aeeee2a496b4d44b00cf81b9863c7f19f49b4c6d6ceabbbc8654f5205",
+        "Created": "2026-11-03T15:27:56.52775482-06:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "IPRange": "",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {},
+        "Labels": {},
+        "Containers": {
+            "b2fb30f5095eafc280938051b222be39f58d60219ade2180422732fd46dc6b11": {
+                "Name": "nginx-red",
+                "EndpointID": "59fc20ac8eea7986d468fcf831d3079e66975a2c72675cecaf940dcc1c7ef189",
+                "MacAddress": "1a:32:bf:e4:5f:c9",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.18.0.0/16": {
+                        "IPsInUse": 4,
+                        "DynamicIPsAvailable": 65532
+                    }
+                }
+            }
+        }
+    }
+]
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker volume inspect volumen-web[27msudo docker volume inspect volumen-web
+[?2004l[
+    {
+        "CreatedAt": "2026-11-03T15:33:44-06:00",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/volumen-web/_data",
+        "Name": "volumen-web",
+        "Options": null,
+        "Scope": "local"
+    }
+]
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker run --rm --network red-proyecto alpine ping -c 4 nginx-red[27msudo docker run --rm --network red-proyecto alpine ping -c 4 nginx-red
+[?2004lPING nginx-red (172.18.0.2): 56 data bytes
+64 bytes from 172.18.0.2: seq=0 ttl=64 time=0.055 ms
+64 bytes from 172.18.0.2: seq=1 ttl=64 time=0.180 ms
+64 bytes from 172.18.0.2: seq=2 ttl=64 time=0.067 ms
+64 bytes from 172.18.0.2: seq=3 ttl=64 time=0.179 ms
+
+--- nginx-red ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.055/0.120/0.180 ms
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker run -d --name nginx-web -p 8080:80 -v "$(pwd)/web":/usr/share/nginx/html:ro nginx:latest[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csudo docker run -d --name nginx-web -p 8080:80 -v "$(pwd)/web":/usr/share/nginx/html:ro nginx:latest
+[?2004lf973bec1ae22c289569e6b7ead91cbbf74cc5e445efb1755a5047a26130211b5
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker build -t servidor-grupoX -f Dockerfile .[27msudo docker build -t servidor-grupoX -f Dockerfile .
+[?2004lDEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+invalid argument "servidor-grupoX" for "-t, --tag" flag: invalid reference format: repository name (library/servidor-grupoX) must be lowercase
+
+Usage:  docker build [OPTIONS] PATH | URL | -
+
+Run 'docker build --help' for more information
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker run -d --name servidor-grupoX -p 8081:80 servidor-grupoX[27msudo docker run -d --name servidor-grupoX -p 8081:80 servidor-grupoX
+[?2004ldocker: invalid reference format: repository name (library/servidor-grupoX) must be lowercase
+
+Run 'docker run --help' for more information
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker build -t servidor-grupox -f Dockerfile .[27msudo docker build -t servidor-grupox -f Dockerfile .
+[?2004lDEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  96.26kB
+Step 1/4 : FROM nginx:latest
+ ---> 5ab5b0b01097
+Step 2/4 : COPY web/ /usr/share/nginx/html/
+ ---> 1ccb29807197
+Step 3/4 : EXPOSE 80
+ ---> Running in 09b5fc44eeec
+ ---> Removed intermediate container 09b5fc44eeec
+ ---> 24e36b4e0b5e
+Step 4/4 : CMD ["nginx", "-g", "daemon off;"]
+ ---> Running in d539c59aa8e1
+ ---> Removed intermediate container d539c59aa8e1
+ ---> 1305a8378ca3
+Successfully built 1305a8378ca3
+Successfully tagged servidor-grupox:latest
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker run -d --name servidor-grupox -p 8081:80 servidor-grupox[27msudo docker run -d --name servidor-grupox -p 8081:80 servidor-grupox
+[?2004l239629fc9ea55d4672b8dd6fee012bb466fd0d10232d1ee444c4d48bfbff6919
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mfor p in 8080 8081 8082 8083; do[27m
+[7m  echo -n "Puerto $p: "[27m
+[7m  curl -s -o /dev/null -w "%{http_code}\n" http://localhost:$p[27m
+[7mdone[27m
+[7msudo docker ps[27m[A[A[A[A]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ for p in 8080 8081 8082 8083; do
+  echo -n "Puerto $p: "
+  curl -s -o /dev/null -w "%{http_code}\n" http://localhost:$p
+done
+sudo docker ps
+[?2004lPuerto 8080: 403
+Puerto 8081: 200
+Puerto 8082: 200
+Puerto 8083: 200
+CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+239629fc9ea5   servidor-grupox   "/docker-entrypoint.…"   15 seconds ago   Up 15 seconds   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   servidor-grupox
+f973bec1ae22   nginx:latest      "/docker-entrypoint.…"   2 minutes ago    Up 2 minutes    0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   nginx-web
+fef981cc9bff   nginx:latest      "/docker-entrypoint.…"   7 minutes ago    Up 7 minutes    0.0.0.0:8083->80/tcp, [::]:8083->80/tcp   nginx-volumen
+b2fb30f5095e   nginx:latest      "/docker-entrypoint.…"   16 minutes ago   Up 16 minutes   0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   nginx-red
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mls -ld web[27m
+[7mls -l web/[27m
+[7msudo docker logs nginx-web | tail -n 5[27m[A[A]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ ls -ld web
+ls -l web/
+sudo docker logs nginx-web | tail -n 5
+[?2004ldrwx------ 2 starksystem starksystem 4096 nov  3 15:07 [0m[01;34mweb[0m
+total 4
+-rw-rw-rw- 1 starksystem starksystem 3055 nov  3 15:07 index.html
+2026/11/03 21:42:44 [notice] 1#1: using the "epoll" event method
+2026/11/03 21:42:44 [notice] 1#1: nginx/1.31.8
+2026/11/03 21:42:44 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2026/11/03 21:42:44 [notice] 1#1: OS: Linux 6.14.0-37-generic
+2026/11/03 21:42:44 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:524288
+2026/11/03 21:42:44 [notice] 1#1: start worker processes
+2026/11/03 21:42:44 [notice] 1#1: start worker process 29
+2026/11/03 21:45:31 [error] 29#29: *1 "/usr/share/nginx/html/index.html" is forbidden (13: Permission denied), client: 172.17.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost:8080"
+/docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+/docker-entrypoint.sh: Configuration complete; ready for start up
+172.17.0.1 - - [03/Nov/2026:21:45:31 +0000] "GET / HTTP/1.1" 403 153 "-" "curl/8.5.0" "-"
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mchmod 755 web[27m
+[7mchmod 644 web/index.html[27m[A]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ chmod 755 web
+chmod 644 web/index.html
+[?2004l[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mecho "===== VERIFICACION DE LOS CUATRO SERVICIOS ====="[27m
+[7mfor p in 8080 8081 8082 8083; do[27m
+[7m  echo -n "Puerto $p: "[27m
+[7m  curl -s -o /dev/null -w "%{http_code}\n" http://localhost:$p[27m
+[7mdone[27m
+[7msudo docker ps[27m[A[A[A[A[A]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ echo "===== VERIFICACION DE LOS CUATRO SERVICIOS ====="
+for p in 8080 8081 8082 8083; do
+  echo -n "Puerto $p: "
+  curl -s -o /dev/null -w "%{http_code}\n" http://localhost:$p
+done
+sudo docker ps
+[?2004l===== VERIFICACION DE LOS CUATRO SERVICIOS =====
+Puerto 8080: 200
+Puerto 8081: 200
+Puerto 8082: 200
+Puerto 8083: 200
+CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+239629fc9ea5   servidor-grupox   "/docker-entrypoint.…"   3 minutes ago    Up 3 minutes    0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   servidor-grupox
+f973bec1ae22   nginx:latest      "/docker-entrypoint.…"   5 minutes ago    Up 5 minutes    0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   nginx-web
+fef981cc9bff   nginx:latest      "/docker-entrypoint.…"   10 minutes ago   Up 10 minutes   0.0.0.0:8083->80/tcp, [::]:8083->80/tcp   nginx-volumen
+b2fb30f5095e   nginx:latest      "/docker-entrypoint.…"   19 minutes ago   Up 19 minutes   0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   nginx-red
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker ps[27msudo docker ps
+[?2004lCONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+239629fc9ea5   servidor-grupox   "/docker-entrypoint.…"   12 minutes ago   Up 12 minutes   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   servidor-grupox
+f973bec1ae22   nginx:latest      "/docker-entrypoint.…"   15 minutes ago   Up 15 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   nginx-web
+fef981cc9bff   nginx:latest      "/docker-entrypoint.…"   20 minutes ago   Up 20 minutes   0.0.0.0:8083->80/tcp, [::]:8083->80/tcp   nginx-volumen
+b2fb30f5095e   nginx:latest      "/docker-entrypoint.…"   28 minutes ago   Up 28 minutes   0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   nginx-red
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mdate[27m
+[7msudo crontab -l | tail -n 2[27m
+[7msudo grep REPORTE /var/log/reporte_sistema.log | tail -n 6[27m[A[A]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ date
+sudo crontab -l | tail -n 2
+sudo grep REPORTE /var/log/reporte_sistema.log | tail -n 6
+[?2004lmar 03 nov 2026 15:59:34 CST
+*/30 * * * * "/home/starksystem/Escritorio/ISL PROYECTO/proyecto-software-libre/scripts/reporte_sistema.sh"
+REPORTE DEL SISTEMA - 2026-11-03 15:24:11
+REPORTE DEL SISTEMA - 2026-11-03 15:30:01
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mdate[27m
+[7msudo crontab -l | tail -n 2[27m
+[7msudo grep REPORTE /var/log/reporte_sistema.log | tail -n 6[27m[A[A]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ date
+sudo crontab -l | tail -n 2
+sudo grep REPORTE /var/log/reporte_sistema.log | tail -n 6
+[?2004lmar 03 nov 2026 16:01:55 CST
+*/30 * * * * "/home/starksystem/Escritorio/ISL PROYECTO/proyecto-software-libre/scripts/reporte_sistema.sh"
+REPORTE DEL SISTEMA - 2026-11-03 15:24:11
+REPORTE DEL SISTEMA - 2026-11-03 15:30:01
+REPORTE DEL SISTEMA - 2026-11-03 16:00:01
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ exit
+[?2004lexit
+
+Script terminado en 2026-11-03 16:02:48-06:00 [CÓDIGO_SALIDA_ORDEN="0"]
+Script iniciado en 2026-11-03 19:57:14-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mcd ~/"Escritorio/ISL PROYECTO/proyecto-software-libre"[27m
+[7mgit config user.name "Tu nombre"[27m
+[7mgit config user.email "tu_correo@ues.edu.sv"[27m
+[7mgit add scripts/red_volumenes.sh docs/[27m
+[7mgit status[27m
+[7mgit commit -m "Integrante 4: red-proyecto, volumen-web, ping con Alpine y verifi[27m[7mc[27m[7macion final" [27m
+[7mgit pull --rebase origin master[27m
+[7mgit push origin master[27m
+[7mgit log --pretty=format:'%h | %an | %ad | %s' --date=short[27m
+[7mgit shortlog -sn[27m
+[7msudo docker ps[27m
+[7mexit[27m[A[A[A[A[A[A[A[A[A[A[A[A[C[Cexit[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[K[K[K[K[7mcd ~/"Escritorio/ISL PROYECTO/proyecto-software-libre"[27m
+[7mgit config user.name "Tu nombre"[27m
+[7mgit config user.email "tu_correo@ues.edu.sv"[27m
+[7mgit add scripts/red_volumenes.sh docs/[27m
+[7mgit status[27m
+[7mgit commit -m "Integrante 4: red-proyecto, volumen-web, ping con Alpine y verifi[27m[7mc[27m[7macion final" [27m
+[7mgit pull --rebase origin master[27m
+[7mgit push origin master[27m
+[7mgit log --pretty=format:'%h | %an | %ad | %s' --date=short[27m
+[7mgit shortlog -sn[27m
+[7msudo docker ps[27m
+[7mexit[27m[A[A[A[A[A[A[A[A[A[A[A[A[C[Ccd ~/"Escritorio/ISL PROYECTO/proyecto-software-libre"
+git config user.name "Tu nombre"
+git config user.email "tu_correo@ues.edu.sv"
+git add scripts/red_volumenes.sh docs/
+git status
+git commit -m "Integrante 4: red-proyecto, volumen-web, ping con Alpine y verificacion final"
+git pull --rebase origin master
+git push origin master
+git log --pretty=format:'%h | %an | %ad | %s' --date=short
+git shortlog -sn
+sudo docker ps
+exit[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[A[A[A[C[C[C[C[C[C[1Phistory | tail -n 100 > docs/comandos_integrante4.txt
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K
+[K[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[7mgit config user.name "Tu nombre"[27m[C[C[C[C[C[Cgit config user.name "Tu nombre"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"M"i"r"a"-"M"V"2"5"0"1"8"
+[?2004l[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mgit config user.email "tu_correo@ues.edu.sv"[27m[C[C[C[C[C[Cgit config user.email "tu_correo@ues.edu.sv"[1Pv"[C[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[K[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[1P"[C[K[K[K[K[K[K[K[K[K[K[K[K[K[7mgit config user.email "tu_correo@ues.edu.sv"[27m[C[C[C[C[C[Cgit config user.email "tu_correo@ues.edu.sv"[1P@ues.edu.sv"[1P@ues.edu.sv"[1P@ues.edu.sv"[1P@ues.edu.sv"[1P@ues.edu.sv"[1P@ues.edu.sv"[1P@ues.edu.sv"[1P@ues.edu.sv"[1P@ues.edu.sv"M@ues.edu.sv"V@ues.edu.sv"2@ues.edu.sv"5@ues.edu.sv"0@ues.edu.sv"1@ues.edu.sv"8@ues.edu.sv"
+[?2004l[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mgit add scripts/red_volumenes.sh docs/[27m[C[C[C[C[C[Cgit add scripts/red_volumenes.sh docs/
+[?2004l[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mgit status[27m[C[C[C[C[C[Cgit status
+[?2004lEn la rama master
+Tu rama está actualizada con 'origin/master'.
+
+Cambios a ser confirmados:
+  (usa "git restore --staged <archivo>..." para sacar del área de stage)
+	[32mnuevos archivos: docs/comandos_integrante4.txt[m
+	[32mnuevos archivos: docs/sesion_integrante4.log[m
+	[32mnuevos archivos: scripts/red_volumenes.sh[m
+
+Cambios no rastreados para el commit:
+  (usa "git add <archivo>..." para actualizar lo que será confirmado)
+  (usa "git restore <archivo>..." para descartar los cambios en el directorio de trabajo)
+	[31mmodificados:     Dockerfile[m
+	[31mmodificados:     README.md[m
+	[31mmodificados:     scripts/instalar_docker.sh[m
+	[31mmodificados:     scripts/reporte_sistema.sh[m
+	[31mmodificados:     scripts/setup_servidor.sh[m
+	[31mmodificados:     web/index.html[m
+
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [K[A[K]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mgit commit -m "Integrante 4: red-proyecto, volumen-web, ping con Alpine y verificacion final"[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit commit -m "Integrante 4: red-proyecto, volumen-web, ping con Alpine y verificacion final"[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kexit
+[?2004lexit
+
+Script terminado en 2026-11-03 20:11:25-06:00 [CÓDIGO_SALIDA_ORDEN="0"]

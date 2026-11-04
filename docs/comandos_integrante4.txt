@@ -1,0 +1,100 @@
+  257  sed -i 's/\r$//' scripts/reporte_sistema.sh
+  258  ls -l scripts/
+  259  sudo ./scripts/reporte_sistema.sh
+  260  sudo tail -n 15 /var/log/reporte_sistema.log
+  261  date
+  262  sudo docker network create red-proyecto
+  263  sudo docker network ls
+  264  sudo docker run -d --name nginx-red --network red-proyecto -p 8082:80 nginx:latest
+  265  sudo docker ps
+  266  curl -s http://localhost:8082 | head -n 5
+  267  sudo docker volume create volumen-web
+  268  sudo docker volume ls
+  269  sudo docker run -d --name nginx-volumen -p 8083:80 -v volumen-web:/usr/share/nginx/html nginx:latest
+  270  sudo docker exec nginx-volumen sh -c 'echo "<h1>Grupo 9 - Volumen persistente</h1>" > /usr/share/nginx/html/index.html'
+  271  curl -s http://localhost:8083
+  272  sudo docker rm -f nginx-volumen
+  273  sudo docker run -d --name nginx-volumen -p 8083:80 -v volumen-web:/usr/share/nginx/html nginx:latest
+  274  sleep 2
+  275  curl -s http://localhost:8083
+  276  sudo docker network inspect red-proyecto
+  277  sudo docker volume inspect volumen-web
+  278  sudo docker run --rm --network red-proyecto alpine ping -c 4 nginx-red
+  279  sudo docker run -d --name nginx-web -p 8080:80 -v "$(pwd)/web":/usr/share/nginx/html:ro nginx:latest
+  280  sudo docker build -t servidor-grupoX -f Dockerfile .
+  281  sudo docker run -d --name servidor-grupoX -p 8081:80 servidor-grupoX
+  282  sudo docker build -t servidor-grupox -f Dockerfile .
+  283  sudo docker run -d --name servidor-grupox -p 8081:80 servidor-grupox
+  284  for p in 8080 8081 8082 8083; do   echo -n "Puerto $p: ";   curl -s -o /dev/null -w "%{http_code}\n" http://localhost:$p; done
+  285  sudo docker ps
+  286  ls -ld web
+  287  ls -l web/
+  288  sudo docker logs nginx-web | tail -n 5
+  289  chmod 755 web
+  290  chmod 644 web/index.html
+  291  echo "===== VERIFICACION DE LOS CUATRO SERVICIOS ====="
+  292  for p in 8080 8081 8082 8083; do   echo -n "Puerto $p: ";   curl -s -o /dev/null -w "%{http_code}\n" http://localhost:$p; done
+  293  sudo docker ps
+  294  date
+  295  sudo crontab -l | tail -n 2
+  296  sudo grep REPORTE /var/log/reporte_sistema.log | tail -n 6
+  297  date
+  298  sudo crontab -l | tail -n 2
+  299  sudo grep REPORTE /var/log/reporte_sistema.log | tail -n 6
+  300  exit
+  301  pwd
+  302  ls
+  303  sudo docker --version
+  304  sudo docker ps
+  305  sudo docker rm -f nginx-red nginx-volumen nginx-web servidor-grupoX 2>/dev/null
+  306  sudo docker network rm red-proyecto 2>/dev/null
+  307  sudo docker volume rm volumen-web 2>/dev/null
+  308  sudo docker ps -a
+  309  mkdir -p docs scripts
+  310  ls web/ scripts/ Dockerfile
+  311  find . -iname "Dockerfile*" -not -path "./.git/*"
+  312  script -a docs/sesion_integrante4.log
+  313  ls -lh docs/
+  314  grep -n -i "contrasena\|password" docs/sesion_integrante4.log || echo "Sin contrasenas en el log"
+  315  cat > scripts/red_volumenes.sh << 'EOF'
+  316  #!/bin/bash
+  317  # Integrante 4 - Apartados 7 y 8: redes, volumenes y pruebas finales
+  318  # Ejecutar con: sudo bash scripts/red_volumenes.sh
+  319  # Apartado 7: red y volumen
+  320  docker network create red-proyecto
+  321  docker run -d --name nginx-red --network red-proyecto -p 8082:80 nginx:latest
+  322  docker volume create volumen-web
+  323  docker run -d --name nginx-volumen -p 8083:80 -v volumen-web:/usr/share/nginx/html nginx:latest
+  324  docker network inspect red-proyecto
+  325  docker volume inspect volumen-web
+  326  docker run --rm --network red-proyecto alpine ping -c 4 nginx-red
+  327  # Apartado 8: verificacion de los cuatro servicios
+  328  for p in 8080 8081 8082 8083; do
+  329  echo -n "Puerto $p: "
+  330  curl -s -o /dev/null -w "%{http_code}\n" http://localhost:$p
+  331  done
+  332  docker ps
+  333  tail -n 20 /var/log/reporte_sistema.log
+  334  EOF
+  335  chmod +x scripts/red_volumenes.sh
+  336  ls -l scripts/ docs/
+  337  exit
+  338  sudo docker ps
+  339  git status
+  340  git remote -v
+  341  sudo docker ps -a
+  342  sudo docker start nginx-web servidor-grupox nginx-red nginx-volumen
+  343  sudo docker ps
+  344  sudo docker ps -a
+  345  sudo docker start nginx-web servidor-grupox nginx-red nginx-volumen
+  346  sudo docker ps
+  347  sudo docker network inspect red-proyecto
+  348  sudo docker volume inspect volumen-web
+  349  sudo docker run --rm --network red-proyecto alpine ping -c 4 nginx-red
+  350  for p in 8080 8081 8082 8083; do echo -n "Puerto $p: "; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:$p; done
+  351  sudo docker ps
+  352  sudo crontab -l | tail -n 2
+  353  sudo grep REPORTE /var/log/reporte_sistema.log | tail -n 6
+  354  col -b < docs/sesion_integrante4.log | less
+  355  history | tail -n 100
+  356  history | tail -n 100 > docs/comandos_integrante4.txt
