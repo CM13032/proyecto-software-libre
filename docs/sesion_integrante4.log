@@ -417,3 +417,122 @@ Cambios no rastreados para el commit:
 [?2004lexit
 
 Script terminado en 2026-11-03 20:11:25-06:00 [CÓDIGO_SALIDA_ORDEN="0"]
+Script iniciado en 2026-11-03 20:36:18-06:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="238" LINES="48"]
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mcat >> README.md << 'EOF'[27m
+
+[7m## Integrante 4 - Redes, volumenes y pruebas finales (Apartados 7 y 8)[27m
+
+[7m### Red personalizada[27m
+[7m- `sudo docker network create red-proyecto`[27m
+[7m- `sudo docker run -d --name nginx-red --network red-proyecto -p 8082:80 nginx:latest`[27m
+[7m- `sudo docker network inspect red-proyecto`[27m
+
+[7m### Volumen persistente[27m
+[7m- `sudo docker volume create volumen-web`[27m
+[7m- `sudo docker run -d --name nginx-volumen -p 8083:80 -v volumen-web:/usr/share/nginx/html nginx:latest`[27m
+[7m- `sudo docker volume inspect volumen-web`[27m
+[7m- Prueba de persistencia: se elimino y recreo `nginx-volumen` y el contenido se conservo.[27m
+
+[7m### Pruebas finales[27m
+[7m- Conectividad: `sudo docker run --rm --network red-proyecto alpine ping -c 4 nginx-red` (0% de perdida).[27m
+[7m- Los cuatro servicios responden 200 en los puertos 8080, 8081, 8082 y 8083.[27m
+[7m- Monitoreo automatico con cron cada 30 minutos verificado en `/var/log/reporte_sistema.log`.[27m
+[7m- Evidencias: `docs/sesion_integrante4.log` y `docs/comandos_integrante4.txt`.[27m
+[7mEOF[27m
+[7mtail -n 25 README.md[27m[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ cat >> README.md << 'EOF'
+
+## Integrante 4 - Redes, volumenes y pruebas finales (Apartados 7 y 8)
+
+### Red personalizada
+- `sudo docker network create red-proyecto`
+- `sudo docker run -d --name nginx-red --network red-proyecto -p 8082:80 nginx:latest`
+- `sudo docker network inspect red-proyecto`
+
+### Volumen persistente
+- `sudo docker volume create volumen-web`
+- `sudo docker run -d --name nginx-volumen -p 8083:80 -v volumen-web:/usr/share/nginx/html nginx:latest`
+- `sudo docker volume inspect volumen-web`
+- Prueba de persistencia: se elimino y recreo `nginx-volumen` y el contenido se conservo.
+
+### Pruebas finales
+- Conectividad: `sudo docker run --rm --network red-proyecto alpine ping -c 4 nginx-red` (0% de perdida).
+- Los cuatro servicios responden 200 en los puertos 8080, 8081, 8082 y 8083.
+- Monitoreo automatico con cron cada 30 minutos verificado en `/var/log/reporte_sistema.log`.
+- Evidencias: `docs/sesion_integrante4.log` y `docs/comandos_integrante4.txt`.
+EOF
+tail -n 25 README.md
+[?2004lServidor Linux automatizado con Docker: administración de usuarios y
+permisos, monitoreo con cron, control de versiones con Git/GitHub y
+servidores web con Nginx en contenedores.
+
+## Estructura
+
+    scripts/    # scripts de automatización
+## Integrante 4 - Redes, volumenes y pruebas finales (Apartados 7 y 8)
+
+### Red personalizada
+- `sudo docker network create red-proyecto`
+- `sudo docker run -d --name nginx-red --network red-proyecto -p 8082:80 nginx:latest`
+- `sudo docker network inspect red-proyecto`
+
+### Volumen persistente
+- `sudo docker volume create volumen-web`
+- `sudo docker run -d --name nginx-volumen -p 8083:80 -v volumen-web:/usr/share/nginx/html nginx:latest`
+- `sudo docker volume inspect volumen-web`
+- Prueba de persistencia: se elimino y recreo `nginx-volumen` y el contenido se conservo.
+
+### Pruebas finales
+- Conectividad: `sudo docker run --rm --network red-proyecto alpine ping -c 4 nginx-red` (0% de perdida).
+- Los cuatro servicios responden 200 en los puertos 8080, 8081, 8082 y 8083.
+- Monitoreo automatico con cron cada 30 minutos verificado en `/var/log/reporte_sistema.log`.
+- Evidencias: `docs/sesion_integrante4.log` y `docs/comandos_integrante4.txt`.
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mgit add README.md[27mgit add README.md
+[?2004l[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mgit commit -m "Integrante 4: documentacion de redes, volumenes y pruebas finales en README"[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit commit -m "Integrante 4: documentacion de redes, volumenes y pruebas finales en README"[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P
+[?2004l[master 7d10536] documentacion de redes, volumenes y pruebas finales en README
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mgit push origin master[27mgit push origin master
+[?2004lUsername for 'https://github.com': Mira-MV25018
+Password for 'https://Mira-MV25018@github.com': 
+Enumerando objetos: 13, listo.
+Contando objetos:   7% (1/13)Contando objetos:  15% (2/13)Contando objetos:  23% (3/13)Contando objetos:  30% (4/13)Contando objetos:  38% (5/13)Contando objetos:  46% (6/13)Contando objetos:  53% (7/13)Contando objetos:  61% (8/13)Contando objetos:  69% (9/13)Contando objetos:  76% (10/13)Contando objetos:  84% (11/13)Contando objetos:  92% (12/13)Contando objetos: 100% (13/13)Contando objetos: 100% (13/13), listo.
+Comprimiendo objetos:  10% (1/10)Comprimiendo objetos:  20% (2/10)Comprimiendo objetos:  30% (3/10)Comprimiendo objetos:  40% (4/10)Comprimiendo objetos:  50% (5/10)Comprimiendo objetos:  60% (6/10)Comprimiendo objetos:  70% (7/10)Comprimiendo objetos:  80% (8/10)Comprimiendo objetos:  90% (9/10)Comprimiendo objetos: 100% (10/10)Comprimiendo objetos: 100% (10/10), listo.
+Escribiendo objetos:  10% (1/10)Escribiendo objetos:  20% (2/10)Escribiendo objetos:  30% (3/10)Escribiendo objetos:  40% (4/10)Escribiendo objetos:  50% (5/10)Escribiendo objetos:  60% (6/10)Escribiendo objetos:  70% (7/10)Escribiendo objetos:  80% (8/10)Escribiendo objetos:  90% (9/10)Escribiendo objetos: 100% (10/10)Escribiendo objetos: 100% (10/10), 9.13 KiB | 2.28 MiB/s, listo.
+Total 10 (delta 3), reusados 0 (delta 0), pack-reusados 0
+remote: Resolving deltas:   0% (0/3)[Kremote: Resolving deltas:  33% (1/3)[Kremote: Resolving deltas:  66% (2/3)[Kremote: Resolving deltas: 100% (3/3)[Kremote: Resolving deltas: 100% (3/3), completed with 1 local object.[K
+To https://github.com/CM13032/proyecto-software-libre.git
+   c92bcfe..7d10536  master -> master
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mgit log --pretty=format:'%h | %an | %ad | %s' --date=short[27mgit log --pretty=format:'%h | %an | %ad | %s' --date=short
+[?2004l[?1h=7d10536 | Mira-MV25018 | 2026-11-03 | documentacion de redes, volumenes y pruebas finales en README[m
+56c0557 | Mira-MV25018 | 2026-11-03 | red-proyecto, volumen-web, ping con Alpine y verificacion final[m
+c92bcfe | Angela Mena | 2026-11-03 | Merge pull request #1 from CM13032/angela-apartados-5-6[m
+9c536d3 | Angela Rebeca Mena Ortiz | 2026-11-03 | Agrega servidor web Nginx y Dockerfile personalizado - Grupo 9[m
+d4845f7 | lv19015 | 2026-11-02 | Script de la instalacion de Docker[m
+9420a30 | lv19015 | 2026-11-02 | Descripcion del proyecto e informacion de integrantes de grupo 9 en archivo README[m
+071727a | CM13032 | 2026-10-31 | Feat: Configuracion inicial del servidor, scripts y documentacion[m
+[K[?1l>[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mgit shortlog -sn[27mgit shortlog -sn
+[?2004l[?1h=     2  Mira-MV25018[m
+     2  lv19015[m
+     1  Angela Mena[m
+     1  Angela Rebeca Mena Ortiz[m
+     1  CM13032[m
+[K[?1l>[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mgit status[27mgit status
+[?2004lEn la rama master
+Tu rama está actualizada con 'origin/master'.
+
+Cambios no rastreados para el commit:
+  (usa "git add <archivo>..." para actualizar lo que será confirmado)
+  (usa "git restore <archivo>..." para descartar los cambios en el directorio de trabajo)
+	[31mmodificados:     docs/sesion_integrante4.log[m
+
+sin cambios agregados al commit (usa "git add" y/o "git commit -a")
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7msudo docker ps[27msudo docker ps
+[?2004l[sudo] contraseña para starksystem: ************            ****    
+CONTAINER ID   IMAGE             COMMAND                  CREATED       STATUS             PORTS                                     NAMES
+239629fc9ea5   servidor-grupox   "/docker-entrypoint.…"   5 hours ago   Up About an hour   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   servidor-grupox
+f973bec1ae22   nginx:latest      "/docker-entrypoint.…"   5 hours ago   Up About an hour   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   nginx-web
+fef981cc9bff   nginx:latest      "/docker-entrypoint.…"   5 hours ago   Up About an hour   0.0.0.0:8083->80/tcp, [::]:8083->80/tcp   nginx-volumen
+b2fb30f5095e   nginx:latest      "/docker-entrypoint.…"   5 hours ago   Up About an hour   0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   nginx-red
+[?2004h]0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre[01;32mstarksystem@starksystem-VirtualBox[00m:[01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre[00m$ [7mexit[27mexit
+[?2004lexit
+
+Script terminado en 2026-11-03 20:41:26-06:00 [CÓDIGO_SALIDA_ORDEN="0"]

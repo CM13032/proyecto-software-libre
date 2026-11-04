@@ -1,100 +1,64 @@
-  257  sed -i 's/\r$//' scripts/reporte_sistema.sh
-  258  ls -l scripts/
-  259  sudo ./scripts/reporte_sistema.sh
-  260  sudo tail -n 15 /var/log/reporte_sistema.log
-  261  date
-  262  sudo docker network create red-proyecto
-  263  sudo docker network ls
-  264  sudo docker run -d --name nginx-red --network red-proyecto -p 8082:80 nginx:latest
-  265  sudo docker ps
-  266  curl -s http://localhost:8082 | head -n 5
-  267  sudo docker volume create volumen-web
-  268  sudo docker volume ls
-  269  sudo docker run -d --name nginx-volumen -p 8083:80 -v volumen-web:/usr/share/nginx/html nginx:latest
-  270  sudo docker exec nginx-volumen sh -c 'echo "<h1>Grupo 9 - Volumen persistente</h1>" > /usr/share/nginx/html/index.html'
-  271  curl -s http://localhost:8083
-  272  sudo docker rm -f nginx-volumen
-  273  sudo docker run -d --name nginx-volumen -p 8083:80 -v volumen-web:/usr/share/nginx/html nginx:latest
-  274  sleep 2
-  275  curl -s http://localhost:8083
-  276  sudo docker network inspect red-proyecto
-  277  sudo docker volume inspect volumen-web
-  278  sudo docker run --rm --network red-proyecto alpine ping -c 4 nginx-red
-  279  sudo docker run -d --name nginx-web -p 8080:80 -v "$(pwd)/web":/usr/share/nginx/html:ro nginx:latest
-  280  sudo docker build -t servidor-grupoX -f Dockerfile .
-  281  sudo docker run -d --name servidor-grupoX -p 8081:80 servidor-grupoX
-  282  sudo docker build -t servidor-grupox -f Dockerfile .
-  283  sudo docker run -d --name servidor-grupox -p 8081:80 servidor-grupox
-  284  for p in 8080 8081 8082 8083; do   echo -n "Puerto $p: ";   curl -s -o /dev/null -w "%{http_code}\n" http://localhost:$p; done
-  285  sudo docker ps
-  286  ls -ld web
-  287  ls -l web/
-  288  sudo docker logs nginx-web | tail -n 5
-  289  chmod 755 web
-  290  chmod 644 web/index.html
-  291  echo "===== VERIFICACION DE LOS CUATRO SERVICIOS ====="
-  292  for p in 8080 8081 8082 8083; do   echo -n "Puerto $p: ";   curl -s -o /dev/null -w "%{http_code}\n" http://localhost:$p; done
-  293  sudo docker ps
-  294  date
-  295  sudo crontab -l | tail -n 2
-  296  sudo grep REPORTE /var/log/reporte_sistema.log | tail -n 6
-  297  date
-  298  sudo crontab -l | tail -n 2
-  299  sudo grep REPORTE /var/log/reporte_sistema.log | tail -n 6
-  300  exit
-  301  pwd
-  302  ls
-  303  sudo docker --version
-  304  sudo docker ps
-  305  sudo docker rm -f nginx-red nginx-volumen nginx-web servidor-grupoX 2>/dev/null
-  306  sudo docker network rm red-proyecto 2>/dev/null
-  307  sudo docker volume rm volumen-web 2>/dev/null
-  308  sudo docker ps -a
-  309  mkdir -p docs scripts
-  310  ls web/ scripts/ Dockerfile
-  311  find . -iname "Dockerfile*" -not -path "./.git/*"
-  312  script -a docs/sesion_integrante4.log
-  313  ls -lh docs/
-  314  grep -n -i "contrasena\|password" docs/sesion_integrante4.log || echo "Sin contrasenas en el log"
-  315  cat > scripts/red_volumenes.sh << 'EOF'
-  316  #!/bin/bash
-  317  # Integrante 4 - Apartados 7 y 8: redes, volumenes y pruebas finales
-  318  # Ejecutar con: sudo bash scripts/red_volumenes.sh
-  319  # Apartado 7: red y volumen
-  320  docker network create red-proyecto
-  321  docker run -d --name nginx-red --network red-proyecto -p 8082:80 nginx:latest
-  322  docker volume create volumen-web
-  323  docker run -d --name nginx-volumen -p 8083:80 -v volumen-web:/usr/share/nginx/html nginx:latest
-  324  docker network inspect red-proyecto
-  325  docker volume inspect volumen-web
-  326  docker run --rm --network red-proyecto alpine ping -c 4 nginx-red
-  327  # Apartado 8: verificacion de los cuatro servicios
-  328  for p in 8080 8081 8082 8083; do
-  329  echo -n "Puerto $p: "
-  330  curl -s -o /dev/null -w "%{http_code}\n" http://localhost:$p
-  331  done
-  332  docker ps
-  333  tail -n 20 /var/log/reporte_sistema.log
-  334  EOF
-  335  chmod +x scripts/red_volumenes.sh
-  336  ls -l scripts/ docs/
-  337  exit
-  338  sudo docker ps
-  339  git status
-  340  git remote -v
-  341  sudo docker ps -a
-  342  sudo docker start nginx-web servidor-grupox nginx-red nginx-volumen
-  343  sudo docker ps
-  344  sudo docker ps -a
-  345  sudo docker start nginx-web servidor-grupox nginx-red nginx-volumen
-  346  sudo docker ps
-  347  sudo docker network inspect red-proyecto
-  348  sudo docker volume inspect volumen-web
-  349  sudo docker run --rm --network red-proyecto alpine ping -c 4 nginx-red
-  350  for p in 8080 8081 8082 8083; do echo -n "Puerto $p: "; curl -s -o /dev/null -w "%{http_code}\n" http://localhost:$p; done
-  351  sudo docker ps
-  352  sudo crontab -l | tail -n 2
-  353  sudo grep REPORTE /var/log/reporte_sistema.log | tail -n 6
-  354  col -b < docs/sesion_integrante4.log | less
-  355  history | tail -n 100
-  356  history | tail -n 100 > docs/comandos_integrante4.txt
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdockerv--version
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mls lsbweb/rscripts/cDockerfile
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mCRON_LINE="*/30 * * * * \"$(pwd)/scripts/reporte_sistema.sh\""27m
+0;starksystem@starksystem-VirtualBox:A~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ CRON_LINE="*/30 * * * * \"$(pwd)/scripts/reporte_sistema.sh\""
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudos./scripts/reporte_sistema.sh
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudo ./scripts/reporte_sistema.sh27m
+0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ sudo ./scripts/reporte_sistema.sh
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mls -l scripts/27m
+0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ ls -l scripts/
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudos./scripts/reporte_sistema.sh
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudo tail -n 15 /var/log/reporte_sistema.log27m
+0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ sudo tail -n 15 /var/log/reporte_sistema.log
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdockertnetworkecreatedred-proyecto
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdockertnetwork2ls
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdockernrun -dn--nameinginx-redn--networkdred-proyecto -p88082:80inginx:latest
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdocker2ps
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mcurcurl -sthttp://localhost:8082h|ahead -n75
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdockerlvolumeecreatelvolumen-web
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdockerlvolume2ls
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudo docker run -d --name nginx-volumen -p 8083:80 \27m
+0;starksystem@starksystem-VirtualBox:l~/Escritorio/ISLAPROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ sudo docker run -d --name nginx-volumen -p 8083:80 \
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudo docker exec nginx-volumen sh -c \27m
+0;starksystem@starksystem-VirtualBox:t~/Escritorio/ISLrPROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ sudo docker exec nginx-volumen sh -c \
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mcurcurl -sthttp://localhost:8083
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdocker rm -finginx-volumen
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudo docker run -d --name nginx-volumen -p 8083:80 \27m
+0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ sudo docker run -d --name nginx-volumen -p 8083:80 \
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mcurcurl -sthttp://localhost:8083
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdockertnetworksinspectdred-proyecto
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdockerlvolumesinspectlvolumen-web
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdockernrunr--rmn--networkdred-proyectopalpinenping -cn4inginx-red
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCsudobdocker2runa-ds--namesnginx-webm-pi8080:80x-vm"$(pwd)/web":/usr/share/nginx/html:roenginx:latest-libre00m$ 7msudo docker run -d --name nginx-web -p 8080:80 -v "$(pwd)/web":/usr/share/nginx/html:ro nginx:latest27m
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdockeribuild -trservidor-grupoX -fcDockerfile7.
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdockernrun -dn--namerservidor-grupoX -p88081:80rservidor-grupoX
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdockeribuild -trservidor-grupox -fcDockerfile7.
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdockernrun -dn--namerservidor-grupox -p88081:80rservidor-grupox
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mfor p in 8080 8081 8082 8083; do27m
+0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ for p in 8080 8081 8082 8083; do
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mls -ld web27m
+0;starksystem@starksystem-VirtualBox:n~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ ls -ld web
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mchmod 755 web27m
+0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ chmod 755 web
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mecho "===== VERIFICACION DE LOS CUATRO SERVICIOS ====="27m
+0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ echo "===== VERIFICACION DE LOS CUATRO SERVICIOS ====="
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdocker2ps
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mdate27m
+0;starksystem@starksystem-VirtualBox:s~/Escritorio/ISLlPROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ date
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mdate27m
+0;starksystem@starksystem-VirtualBox:s~/Escritorio/ISLlPROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ date
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ exit
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mcd ~/"Escritorio/ISL PROYECTO/proyecto-software-libre"27m
+CCCCCCgittconfigtuser.emails"tu_corre111111111PMV25018@ues.edu.sv"111111111111PK7mgitrconfigeuser.emailk"tu_correo@ues.edu.sv"27mlBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mgit config user.email "tu_correo@ues.edu.sv"27m
+CCCCCCgittaddsscripts/red_volumenes.shldocs/~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mgit add scripts/red_volumenes.sh docs/27m
+CCCCCCgittstatustem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mgit status27m
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mcat >> README.md << 'EOF'27m
+0;starksystem@starksystem-VirtualBox:A~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ cat >> README.md << 'EOF'
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mgitgitdaddAREADME.md
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCgiticommit3-ms"Integrantes4:11111111111111Pdeoredes,1volumenesrytpruebasLfinalesTenpREADME"-software-libre00m$ 7mgit commit -m "Integrante 4: documentacion de redes, volumenes y pruebas finales en README"27m
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mgitgitspushioriginsmaster
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mgitgitglogp--pretty=format:'%h%|n%an%|d%ad%|'%s'd--date=short
+K?1l?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mgitgitoshortlogn-sn
+K?1l?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mgitgitastatus
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7msudsudocdocker2ps
+?2004h0;starksystem@starksystem-VirtualBox: ~/Escritorio/ISL PROYECTO/proyecto-software-libre01;32mstarksystem@starksystem-VirtualBox00m:01;34m~/Escritorio/ISL PROYECTO/proyecto-software-libre00m$ 7mexiexit
